@@ -45,12 +45,14 @@ pub enum Chicks {
 }
 
 impl Chicks {
+  /// glue code.
   pub fn fill(&self, range: Range<usize>) -> Vec<Chick> {
     match self {
       Self::Cover(_) => chicks::covers(range),
       Self::Uncover(_) => chicks::uncovers(range),
     }
   }
+  /// glue code.
   pub fn res_av(&self) -> Decimal {
     match self {
       Self::Cover(res) => *res,
