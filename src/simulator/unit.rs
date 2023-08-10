@@ -102,8 +102,8 @@ impl UnitIOMaker {
 /// It's data class.
 pub struct UnitIO {
   chicks: Vec<Chick>,
-  res: Decimal,
   skill_buff: Decimal,
+  res: Decimal,
 }
 
 impl UnitIO {
