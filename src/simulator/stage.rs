@@ -1,7 +1,7 @@
 use chrono::Duration;
 use rust_decimal::Decimal;
 
-/// Times how much to clear.
+/// dataclass for stage to farm.
 pub struct Stage {
   laps: Decimal,
   exp_base: Decimal,

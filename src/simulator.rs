@@ -7,11 +7,13 @@ pub use unit::{
   accompanyings, Chicks, HeadCount, UnitIO, UnitIOMaker,
 };
 
+/// A dataclass of simulated result.
 pub struct Detail {
   pub total_exp: Decimal,
   pub total_res: Decimal,
 }
 
+// it calcs some element at the same time.
 pub fn simulate(unit_io: UnitIO, stage: Stage) -> Detail {
   let laps = stage.get_laps();
   let total_exp = unit_io.sum_exp(stage.get_exp()) * laps;
