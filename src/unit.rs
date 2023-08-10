@@ -1,6 +1,6 @@
 mod combatant;
 mod count;
-use std::{fmt::DebugList, ops::Range};
+use std::ops::Range;
 
 pub use combatant::accompanyings;
 use combatant::{buffs, Accompanying, Chick};
@@ -9,6 +9,7 @@ use rust_decimal::prelude::*;
 use rust_decimal_macros::dec;
 
 mod chicks {
+  //! To fill remain of unit with chicks.
   use super::*;
   use std::ops::Range;
   fn normal() -> Chick {
@@ -58,6 +59,7 @@ impl Chicks {
   }
 }
 
+/// The builder for out of res and in of exp.
 pub struct UnitIOMaker {
   res: Decimal,
   skill_buff: Decimal,
@@ -72,6 +74,8 @@ impl UnitIOMaker {
       count,
     }
   }
+  /// You should pass constant of accompanying
+  /// from accompanyings modules. e.g. EMILY_2.
   pub fn add(&mut self, accompanying: Accompanying) -> &mut Self {
     let Accompanying { res, skill_buff } = accompanying;
     self.res += res.0;
@@ -79,6 +83,7 @@ impl UnitIOMaker {
     self.count.inc();
     self
   }
+  /// fill with chicks to headcount.
   pub fn fill(&self, filler: Chicks) -> UnitIO {
     let chicks = filler.fill(self.count.remain_range());
     let num_chicks = Decimal::new(chicks.len() as i64, 0);
@@ -91,6 +96,8 @@ impl UnitIOMaker {
   }
 }
 
+/// Details for unit io. this does'nt have some special logics.
+/// It's data class.
 pub struct UnitIO {
   chicks: Vec<Chick>,
   res: Decimal,
@@ -112,7 +119,7 @@ impl UnitIO {
 }
 
 #[cfg(test)]
-mod unit_variant {
+mod unitio_variant {
   use super::*;
   use rstest::*;
 
