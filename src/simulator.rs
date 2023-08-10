@@ -8,19 +8,29 @@ pub use unit::{
 };
 
 /// A dataclass of simulated result.
+/// The each value is floored.
 pub struct Detail {
   pub total_exp: Decimal,
   pub total_res: Decimal,
+  pub exp_per_res: Decimal,
 }
 
 // it calcs some element at the same time.
 pub fn simulate(unit_io: UnitIO, stage: Stage) -> Detail {
   let laps = stage.get_laps();
-  let total_exp = unit_io.sum_exp(stage.get_exp()) * laps;
-  let total_res = unit_io.sum_res() * laps;
+
+  let unit_exp = unit_io.sum_exp(stage.get_exp());
+  let unit_res = unit_io.sum_res();
+  let exp_per_res = unit_exp / unit_res;
+  let exp_per_res = exp_per_res.floor();
+
+  let total_exp = unit_exp * laps;
+  let total_res = unit_res * laps;
+
   Detail {
     total_exp,
     total_res,
+    exp_per_res,
   }
 }
 
@@ -58,5 +68,12 @@ mod simulate {
     let res_emily = accompanyings::EMILY_2.res.0;
     let expected = (res_emily + Decimal::new(50 * 4, 0)) * dec!(60);
     assert_eq!(total, expected);
+  }
+
+  fn exp_per_res(detail: Detail) {
+    let balance = detail.exp_per_res;
+    // 52800/299
+    let expected = dec!(176);
+    assert_eq!(balance, expected);
   }
 }

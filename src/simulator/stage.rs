@@ -13,12 +13,14 @@ fn to_decimal_sec(duration: Duration) -> Decimal {
 }
 
 impl Stage {
+  // About laps number, it will be floored.
   pub fn new(
     laptime: Duration,
     total_time: Duration,
     exp_base: Decimal,
   ) -> Stage {
     let laps = to_decimal_sec(total_time) / to_decimal_sec(laptime);
+    let laps = laps.floor();
     Stage { laps, exp_base }
   }
   pub fn get_laps(&self) -> Decimal {
