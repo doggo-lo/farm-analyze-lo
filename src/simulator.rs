@@ -70,6 +70,7 @@ mod simulate {
     assert_eq!(total, expected);
   }
 
+  #[rstest]
   fn exp_per_res(detail: Detail) {
     let balance = detail.exp_per_res;
     // 52800/299
