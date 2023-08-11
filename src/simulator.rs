@@ -9,6 +9,7 @@ pub use unit::{
 
 /// A dataclass of simulated result.
 /// The each value is floored.
+#[derive(Debug)]
 pub struct Detail {
   pub total_exp: Decimal,
   pub total_res: Decimal,
