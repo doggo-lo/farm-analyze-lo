@@ -39,6 +39,7 @@ You can use the result as rough guess.
 
 In API, this use `chrono` crate to handle time in sligntly larger units than `std::time::Duration`.
 You can pass times to the library at hours or minutes by it.
+Add, this use `rust_decimal` crate to handle float value with smaller errors than default f64.
 
 # References
 
