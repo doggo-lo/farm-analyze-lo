@@ -39,6 +39,7 @@ mod chicks {
 /// leader-buff and improved-learning-system.
 /// So others are uncover.
 /// Add, it has average of total-resource.
+#[derive(Clone, Copy)]
 pub enum Chicks {
   Cover(Decimal),
   Uncover(Decimal),
