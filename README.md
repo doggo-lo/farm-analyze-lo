@@ -42,9 +42,9 @@ You can pass times to the library at hours or minutes by it.
 
 # References
 
-* The formula about exp with some buffs from combatant's skill and gear them
+* The formula about exp with some buffs from combatant's skill and gear them.
   * [전투 결과 분석실의 경험치 계산](https://arca.live/b/breaking/6491839)
-* The resources and values of buffs
+* The resources and values of buffs.
   * [Last Origin (ラストオリジン) 日本版攻略wiki](https://arca.live/b/breaking/6491839)
 
 # License
